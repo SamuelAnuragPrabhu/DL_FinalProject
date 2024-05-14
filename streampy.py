@@ -5,9 +5,6 @@ from PIL import Image
 import os
 import numpy as np
 import keras
-# from keras.preprocessing.image import load_img, img_to_array
-from keras.preprocessing.image import ImageDataGenerator
-from keras.applications import inception_v3
 from model import orientation_model, damage_model
 
 # tensorflow gpu
@@ -37,9 +34,11 @@ else:
 def load_model(type='orientation'):
     if type == 'orientation':
         model = orientation_model(n_classes=9)
+        print(os.getcwd())
         model.load_weights('transfer-learning\\orientation_detection\\model\\top_model_weights2.h5')
     elif type == 'damage':
         model = damage_model(n_classes=2, fc_layer_size=512)
+        print(os.getcwd())
         model.load_weights('transfer-learning\\damage_detection\\model\\damage_detection_weights2.h5')
     return model
 
