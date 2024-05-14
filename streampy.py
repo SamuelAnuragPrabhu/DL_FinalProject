@@ -11,7 +11,6 @@ from model import orientation_model, damage_model
 physical_devices = tensorflow.config.list_physical_devices('GPU')
 print("Num GPUs Available: ", len(physical_devices))
 
-
 st.title("Vehicle Orientation and quality Assessment")
 
 st.markdown("### 🚗🚘🚔🚖🚍 Classification Application")
@@ -34,15 +33,9 @@ else:
 def load_model(type='orientation'):
     if type == 'orientation':
         model = orientation_model(n_classes=9)
-        print(os.getcwd())
-        print(os.listdir())
-        print(os.listdir('transfer-learning/'))
-        print(os.listdir('transfer-learning/orientation_detection/'))
-        print(os.listdir('transfer-learning/orientation_detection/model/'))
         model.load_weights('transfer-learning/orientation_detection/model/top_model_weights2.h5')
     elif type == 'damage':
         model = damage_model(n_classes=2, fc_layer_size=512)
-        print(os.getcwd())
         model.load_weights('transfer-learning/damage_detection/model/damage_detection_weights2.h5')
     return model
 
