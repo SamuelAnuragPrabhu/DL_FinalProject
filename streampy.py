@@ -33,7 +33,7 @@ else:
 # model = keras.models.load_model('model/model_optimized')
 ### By Weights
 
-@st.cache_resource
+# @st.cache_resource
 def load_model(type='orientation'):
     if type == 'orientation':
         model = orientation_model(n_classes=9)
