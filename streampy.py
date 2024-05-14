@@ -35,6 +35,10 @@ def load_model(type='orientation'):
     if type == 'orientation':
         model = orientation_model(n_classes=9)
         print(os.getcwd())
+        print(os.listdir())
+        print(os.listdir('transfer-learning/'))
+        print(os.listdir('transfer-learning/orientation_detection/'))
+        print(os.listdir('transfer-learning/orientation_detection/model/'))
         model.load_weights('transfer-learning\\orientation_detection\\model\\top_model_weights2.h5')
     elif type == 'damage':
         model = damage_model(n_classes=2, fc_layer_size=512)
